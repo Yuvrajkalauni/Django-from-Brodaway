@@ -1,80 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
     <style>
         /* Reset and Base Styles */
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #e0eafc, #cfdef3);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Number/Score Container */
-#game_number {
-    font-size: 5rem;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.1s ease;
-}
+        /* Number/Score Container */
+        #game_number {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s ease;
+        }
 
-/* Button Container/Layout if you decide to wrap them, 
+        /* Button Container/Layout if you decide to wrap them, 
    but works directly on the buttons too */
-button {
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 0.8rem 1.8rem;
-    margin: 0.5rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
-}
+        button {
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.8rem 1.8rem;
+            margin: 0.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
 
-/* Specific Button Styling */
-button[onclick="inc()"] {
-    background-color: #2ecc71;
-    color: white;
-}
+        /* Specific Button Styling */
+        button[onclick="inc()"] {
+            background-color: #2ecc71;
+            color: white;
+        }
 
-button[onclick="inc()"]:hover {
-    background-color: #27ae60;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
-}
+        button[onclick="inc()"]:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
+        }
 
-button[onclick="inc()"]:active {
-    transform: translateY(1px);
-}
+        button[onclick="inc()"]:active {
+            transform: translateY(1px);
+        }
 
-button[onclick="reset()"] {
-    background-color: #e74c3c;
-    color: white;
-}
+        button[onclick="reset()"] {
+            background-color: #e74c3c;
+            color: white;
+        }
 
-button[onclick="reset()"]:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
-}
+        button[onclick="reset()"]:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
+        }
 
-button[onclick="reset()"]:active {
-    transform: translateY(1px);
-}
+        button[onclick="reset()"]:active {
+            transform: translateY(1px);
+        }
     </style>
 </head>
+
 <body>
     <div id="game_number">0</div>
     <button type="button" onclick="inc()">Press to increase count</button>
@@ -82,22 +84,23 @@ button[onclick="reset()"]:active {
 
 </body>
 <script>
-    function inc(){
+    function inc() {
         let data = document.getElementById("game_number").innerText
         Number(data)
         data++
         document.getElementById("game_number").innerText = data
     }
 
-    function reset(){
+    function reset() {
         let data = document.getElementById("game_number").innerText
         Number(data)
         data = 0
         document.getElementById("game_number").innerText = data
         console.log(data)
     }
-    
-    
-    
+
+
+
 </script>
+
 </html>
