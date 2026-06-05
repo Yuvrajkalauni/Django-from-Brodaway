@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game</title>
 </head>
 <body>
-    <span class="game_number"><h1>0</h1></span>
-    <button type="button">Press here</button>
-    <button type="button">Reset</button>
+    <div id="game_number">0</div>
+    <button type="button" onclick="inc()">Press to increase count</button>
+    <button type="button" onclick="reset()">Reset</button>
 
 </body>
 <script>
-    let data = document.getElementById("b")
+    function inc(){
+        let data = document.getElementById("game_number").innerText
+        Number(data)
+        data++
+        document.getElementById("game_number").innerText = data
+    }
+
+    function reset(){
+        let data = document.getElementById("game_number").innerText
+        Number(data)
+        data = 0
+        document.getElementById("game_number").innerText = data
+        console.log(data)
+    }
+    
     
     
 </script>
