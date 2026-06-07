@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TechNova}} Company</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            line-height: 1.6;
+        }
+
+        header{
+            background: #222;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .hero{
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.5),
+            rgba(0,0,0,0.5)),
+            url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200")
+            center/cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1{
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .btn{
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            margin-top: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        section{
+            padding: 60px 10%;
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .services{
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card{
+            width: 280px;
+            padding: 20px;
+            background: #f4f4f4;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .contact{
+            background: #222;
+            color: white;
+            text-align: center;
+        }
+
+        footer{
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>{{TechNova}}</h2>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div>
+            <h1>Welcome to {{TechNova}}</h1>
+            <p>We build modern websites and software solutions.</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p style="text-align:center;">
+            TechNova is a technology company providing web development,
+            software solutions, and IT consulting services to businesses.
+        </p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+
+        <div class="services">
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Responsive and modern websites for businesses.</p>
+            </div>
+
+            <div class="card">
+                <h3>Software Development</h3>
+                <p>Custom software tailored to your requirements.</p>
+            </div>
+
+            <div class="card">
+                <h3>IT Consulting</h3>
+                <p>Professional guidance for your technology needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@technova.com</p>
+        <p>Phone: +977 98XXXXXXXX</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 TechNova. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
