@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import home , json_home, detail, show_complany
-
+from product.views import show_items
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
     path('dictionary/', json_home),
     path('detail/', detail),
-    path('company/',show_complany)
+    path('company/',show_complany),
+    path('show_items/', show_items)
 ]
