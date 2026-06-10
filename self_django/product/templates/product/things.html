@@ -102,46 +102,20 @@
 <body>
 
     <header>
-        <h1>Our Products</h1>
+        <h1>My family</h1>
     </header>
 
     <div class="container">
-
+        {%for i in Products%}
         <!-- Card 1: Headphones -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/250" alt="Product">
-            <h3>Wireless Headphones</h3>
-            <p>High-quality sound with noise cancellation.</p>
-            <span>$49.99</span>
-            <button>Buy Now</button>
+            <h3>{{i.name}}</h3>
+            <p>{{i.address}}</p>
+            <span>{{i.phone_number}}</span>
+            <button>View Now</button>
         </div>
+        {% endfor %}
 
-        <!-- Card 2: Smart Watch -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/250" alt="Product">
-            <h3>Smart Watch</h3>
-            <p>Track fitness, calls, and notifications.</p>
-            <span>$79.99</span>
-            <button>Buy Now</button>
-        </div>
-
-        <!-- Card 3: Speaker -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/250" alt="Product">
-            <h3>Bluetooth Speaker</h3>
-            <p>Portable speaker with powerful bass.</p>
-            <span>$39.99</span>
-            <button>Buy Now</button>
-        </div>
-
-        <!-- Card 4: Mouse -->
-        <div class="product-card">
-            <img src="https://via.placeholder.com/250" alt="Product">
-            <h3>Gaming Mouse</h3>
-            <p>RGB lighting and high precision sensor.</p>
-            <span>$29.99</span>
-            <button>Buy Now</button>
-        </div>
 
     </div>
 
