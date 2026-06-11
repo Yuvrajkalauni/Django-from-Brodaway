@@ -34,3 +34,25 @@ def WF_create_product(request):
         "form":form
     }
     return render(request, 'product/WF_create_product.html', context)
+
+# Update product data
+def Product_update(request,id):
+    product = Items.objects.get(id=id)
+    form = Product_form(instance = product)
+    if request.method == 'POST':
+        data = request.POST
+        form = Product_form(instance=product, data=data)
+        if form.is_valid:
+            form.save()
+            return redirect('/show_items')
+    context = {
+        "form":form
+    }
+    return render(request, 'product/update_product.html', context)
+
+# Delete Product data
+def Product_delete(request,id):
+    product = Items.objects.get(id=id)
+    product.delete()
+    return redirect('/show_items')
+

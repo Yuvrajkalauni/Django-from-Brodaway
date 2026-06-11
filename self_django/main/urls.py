@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import home , json_home, detail, show_complany
-from product.views import show_items, WOF_create_product, WF_create_product
+from product.views import show_items, WOF_create_product, WF_create_product, Product_update, Product_delete
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
@@ -26,5 +26,7 @@ urlpatterns = [
     path('company/',show_complany),
     path('show_items/', show_items),
     path("WF_create_product/", WF_create_product),
+    path("update_product/<int:id>", Product_update),
+    path("delete/<int:id>", Product_delete),
     path('whithout_form.py_create_product/', WOF_create_product)
 ]
