@@ -16,14 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from home.views import home , json_home, detail, show_complany
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home),
-    path('dictionary/', json_home),
-    path('detail/', detail),
-    path('company/',show_complany),
-    path('product/', include('product.urls')),
-    path('school/', include('school.urls'))  
+    path('product/', include('product.urls')), 
 ]
