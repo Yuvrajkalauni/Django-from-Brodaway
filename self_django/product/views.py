@@ -20,7 +20,6 @@ def WOF_create_product(request):
         return redirect('/show_items')     #This redirects user to show_items web page which let them view created product
     return render(request, "product/WOF_create_product.html")
 
-
 # With_using_form create product
 def WF_create_product(request):
     form = Product_form()

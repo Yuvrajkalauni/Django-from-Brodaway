@@ -31,5 +31,7 @@ class Student(models.Model):
     def __str__(self):
         return self.full_name
 
-
+# class Grade(models.Model):
+#     name = models.OneToOneField(Teacher, on_delete=models.CASCADE, null=True, verbose_name = 'Name', help_text = 'Enter you class teacher name')
+    
 

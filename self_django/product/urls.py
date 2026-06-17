@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 from product.views import show_items, WOF_create_product, WF_create_product, Product_update, Product_delete
 
 urlpatterns = [

@@ -24,6 +24,6 @@ urlpatterns = [
     path('dictionary/', json_home),
     path('detail/', detail),
     path('company/',show_complany),
-    path('product/', include('product.urls'))
-    
+    path('product/', include('product.urls')),
+    path('school/', include('school.urls'))  
 ]
