@@ -13,11 +13,14 @@ def home_task(request):
 
 
 def create_task(request):
-    data = TaskForm()
+    form = TaskForm()
     if request.method == 'POST':
         data = request.POST
         form = TaskForm(data=data)
         if form.is_valid:
             form.save()
             return redirect ('home')
-    return render(request,'create_task.html')
+    context = {
+        'form' : form
+    }
+    return render(request,'create_task.html', context)
