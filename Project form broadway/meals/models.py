@@ -66,7 +66,7 @@ class Ingredient(models.Model):
         return self.name
     
 
-class MealIngredients(models.Model):
+class MealIngredient(models.Model):
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.IntegerField()

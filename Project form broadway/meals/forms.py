@@ -25,7 +25,7 @@ class IngredientForm(forms.ModelForm):
         fields = "__all__"
 
 
-class MealIngredientsForm(forms.ModelForm):
+class MealIngredientForm(forms.ModelForm):
     class Meta:
         model = MealIngredients
         fields = "__all__"
