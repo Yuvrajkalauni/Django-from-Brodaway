@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NutriGPT{% endblock %}</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        body{
+            font-family: 'Poppins', sans-serif;
+            background:#f8fafc;
+        }
+
+        .sidebar-link{
+            transition:all .25s ease;
+        }
+
+        .sidebar-link:hover{
+            background:#1e293b;
+            transform:translateX(5px);
+        }
+
+        .active{
+            background:#10b981;
+        }
+    </style>
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<div class="flex h-screen overflow-hidden">
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-xl">
+
+        <!-- Logo -->
+
+        <div class="h-20 flex items-center justify-center border-b border-slate-700">
+
+            <div class="flex items-center gap-3">
+
+                <div class="w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center">
+
+                    <i class="fa-solid fa-heart-pulse text-2xl text-white"></i>
+
+                </div>
+
+                <div>
+
+                    <h1 class="text-2xl font-bold tracking-wide">
+                        NutriGPT
+                    </h1>
+
+                    <p class="text-xs text-slate-400">
+                        Nutrition Management
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="flex-1 px-4 py-6 space-y-2">
+
+            <a href="{% url "dashboard" %}"
+               class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl">
+
+                <i class="fa-solid fa-gauge-high w-5"></i>
+                Dashboard
+
+            </a>
+
+            <a href="{% url 'Ingredient-list' %}"
+               class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl">
+
+                <i class="fa-solid fa-carrot w-5"></i>
+                Ingredients
+
+            </a>
+
+            <a href="{% url 'meal-list' %}"
+               class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl">
+
+                <i class="fa-solid fa-bowl-food w-5"></i>
+                Meals
+
+            </a>
+
+            <a href="{% url 'MealIngredient-list' %}"
+               class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl">
+
+                <i class="fa-solid fa-layer-group w-5"></i>
+                Meal Ingredients
+
+            </a>
+
+            <a href="{% url 'MealPlan-list' %}"
+               class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl">
+
+                <i class="fa-solid fa-calendar-days w-5"></i>
+                Meal Plans
+
+            </a>
+
+            <a href="{% url 'MealPlanItem-list' %}"
+               class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl">
+
+                <i class="fa-solid fa-list-check w-5"></i>
+                Meal Plan Items
+
+            </a>
+
+        </nav>
+
+        <!-- Logout -->
+
+        <div class="p-4 border-t border-slate-700">
+
+            <a href="{}"
+               class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-red-300 hover:bg-red-600 hover:text-white">
+
+                <i class="fa-solid fa-right-from-bracket w-5"></i>
+                Logout
+
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- ================= Main Content ================= -->
+
+    <div class="flex flex-col flex-1 overflow-hidden">
+
+        <!-- Navbar -->
+
+        <header class="h-20 bg-white shadow-sm border-b flex items-center justify-between px-8">
+
+            <div>
+
+                <h2 class="text-2xl font-bold text-slate-700">
+
+                    {% block page_title %}
+                    Dashboard
+                    {% endblock %}
+
+                </h2>
+
+                <p class="text-sm text-gray-500">
+                    Welcome to NutriGPT Dashboard
+                </p>
+
+            </div>
+
+            <div class="flex items-center gap-6">
+
+                <!-- Search -->
+
+                <div class="relative hidden md:block">
+
+                    <input type="text"
+                           placeholder="Search..."
+                           class="w-72 border border-gray-300 rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-gray-400"></i>
+
+                </div>
+
+                <!-- Notification -->
+
+                <button class="relative text-gray-600 text-xl hover:text-emerald-600">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500"></span>
+
+                </button>
+
+                <!-- Profile -->
+
+                <div class="flex items-center gap-3">
+
+                    <img src="https://i.pravatar.cc/45"
+                         class="rounded-full w-11 h-11 border-2 border-emerald-500">
+
+                    <div>
+
+                        <h4 class="font-semibold">
+                            Admin
+                        </h4>
+
+                        <p class="text-sm text-gray-500">
+                            Nutrition Administrator
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- Page Content -->
+
+        <main class="flex-1 overflow-y-auto p-8 bg-slate-50">
+
+            {% block content %}
+
+            
+
+            {% endblock %}
+
+        </main>
+
+    </div>
+
+</div>
+
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

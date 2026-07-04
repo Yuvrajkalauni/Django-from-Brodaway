@@ -1,0 +1,211 @@
+{% extends "home/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block page_title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="space-y-8">
+
+    <!-- Welcome -->
+    <div class="bg-gradient-to-r from-emerald-600 to-emerald-500 rounded-2xl text-white p-8 shadow-lg">
+
+        <h1 class="text-3xl font-bold">
+            Welcome to NutriGPT 👋
+        </h1>
+
+        <p class="mt-2 text-emerald-100">
+            Manage meals, ingredients and meal plans from one place.
+        </p>
+
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+        <!-- Meals -->
+        <div class="bg-white rounded-xl shadow border border-gray-100 p-6 hover:shadow-lg transition">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+
+                    <p class="text-gray-500 text-sm">
+                        Total Meals
+                    </p>
+
+                    <h2 class="text-4xl font-bold mt-2 text-slate-800">
+                        {{ meal }}
+                    </h2>
+
+                </div>
+
+                <div class="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center">
+
+                    <i class="fa-solid fa-bowl-food text-2xl text-emerald-600"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Ingredients -->
+        <div class="bg-white rounded-xl shadow border border-gray-100 p-6 hover:shadow-lg transition">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+
+                    <p class="text-gray-500 text-sm">
+                        Ingredients
+                    </p>
+
+                    <h2 class="text-4xl font-bold mt-2 text-slate-800">
+                        {{ ingredient }}
+                    </h2>
+
+                </div>
+
+                <div class="w-14 h-14 rounded-xl bg-orange-100 flex items-center justify-center">
+
+                    <i class="fa-solid fa-carrot text-2xl text-orange-600"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Meal Plans -->
+        <div class="bg-white rounded-xl shadow border border-gray-100 p-6 hover:shadow-lg transition">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+
+                    <p class="text-gray-500 text-sm">
+                        Meal Plans
+                    </p>
+
+                    <h2 class="text-4xl font-bold mt-2 text-slate-800">
+                        {{ meal_plan }}
+                    </h2>
+
+                </div>
+
+                <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center">
+
+                    <i class="fa-solid fa-calendar-days text-2xl text-blue-600"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Meal Plan Items -->
+        <div class="bg-white rounded-xl shadow border border-gray-100 p-6 hover:shadow-lg transition">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+
+                    <p class="text-gray-500 text-sm">
+                        Meal Plan Items
+                    </p>
+
+                    <h2 class="text-4xl font-bold mt-2 text-slate-800">
+                        {{ meal_plan_items }}
+                    </h2>
+
+                </div>
+
+                <div class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center">
+
+                    <i class="fa-solid fa-list-check text-2xl text-purple-600"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Meal Ingredients -->
+        <div class="bg-white rounded-xl shadow border border-gray-100 p-6 hover:shadow-lg transition">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+
+                    <p class="text-gray-500 text-sm">
+                        Meal Ingredients
+                    </p>
+
+                    <h2 class="text-4xl font-bold mt-2 text-slate-800">
+                        {{ meal_ingredient }}
+                    </h2>
+
+                </div>
+
+                <div class="w-14 h-14 rounded-xl bg-pink-100 flex items-center justify-center">
+
+                    <i class="fa-solid fa-layer-group text-2xl text-pink-600"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Future Dashboard Widgets -->
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+
+        <!-- Recent Activity -->
+        <div class="bg-white rounded-xl shadow border border-gray-100 p-6">
+
+            <h3 class="text-xl font-semibold mb-4">
+                Recent Activity
+            </h3>
+
+            <div class="text-gray-500 py-12 text-center">
+
+                <i class="fa-solid fa-clock-rotate-left text-5xl mb-4"></i>
+
+                <p>
+                    Recent activity will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Analytics -->
+        <div class="bg-white rounded-xl shadow border border-gray-100 p-6">
+
+            <h3 class="text-xl font-semibold mb-4">
+                Analytics
+            </h3>
+
+            <div class="text-gray-500 py-12 text-center">
+
+                <i class="fa-solid fa-chart-line text-5xl mb-4"></i>
+
+                <p>
+                    Charts and analytics will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
