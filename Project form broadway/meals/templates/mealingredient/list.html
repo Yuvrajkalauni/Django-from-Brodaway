@@ -13,18 +13,18 @@
 
         <div>
             <h1 class="text-3xl font-bold text-slate-800">
-                Meals
+                Meal Ingredient
             </h1>
             <p class="text-gray-500 mt-1">
-                Manage all meals available in NutriGPT.
+                Manage all Meal Ingredient available in NutriGPT.
             </p>
         </div>
 
-        <a href="{% url 'meal-create' %}"
+        <a href="{% url 'MealIngredient-create' %}"
            class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-lg shadow transition">
 
             <i class="fa-solid fa-plus"></i>
-            Add Meal
+            Add Meal Ingredient
 
         </a>
 
@@ -39,11 +39,11 @@
 
             <div>
                 <h2 class="text-xl font-semibold text-slate-800">
-                    Meal List
+                    Meal Ingredient List
                 </h2>
 
                 <p class="text-sm text-gray-500">
-                    Total Meals : {{ page_obj.paginator.count }}
+                    Total Meal Ingredient : {{ page_obj.paginator.count }}
                 </p>
             </div>
 
@@ -82,19 +82,15 @@
                         </th>
 
                         <th class="px-6 py-4 text-left font-semibold">
-                            Meal Name
+                            Meal
                         </th>
 
                         <th class="px-6 py-4 text-left font-semibold">
-                            Meal Type
+                            Ingredient
                         </th>
 
                         <th class="px-6 py-4 text-left font-semibold">
-                            Preparation Time
-                        </th>
-
-                        <th class="px-6 py-4 text-left font-semibold">
-                            Description
+                            Quantity
                         </th>
 
                         <th class="px-6 py-4 text-center font-semibold">
@@ -107,7 +103,7 @@
 
                 <tbody>
 
-                {% for meal in meals %}
+                {% for Ingredient in MealIngredients %}
 
                     <tr class="border-t hover:bg-slate-50">
 
@@ -116,14 +112,14 @@
                         </td>
 
                         <td class="px-6 py-4 font-medium">
-                            {{ meal.name }}
+                            {{ Ingredient.meal }}
                         </td>
 
                         <td class="px-6 py-4">
 
                             <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium">
 
-                                {{ meal.meal_type }}
+                                {{ Ingredient.ingredient}}
 
                             </span>
 
@@ -131,22 +127,17 @@
 
                         <td class="px-6 py-4">
 
-                            {{ meal.prepare_time }} min
+                            {{ Ingredient.quantity }}
 
                         </td>
-
-                        <td class="px-6 py-4 text-gray-600">
-
-                            {{ meal.description|default:"-"|truncatechars:60 }}
-
-                        </td>
+                        
 
                         <td class="px-6 py-4">
 
                             <div class="flex justify-center gap-2">
 
                                 <!-- Update -->
-                                <a href="{% url 'meal-update' meal.pk %}"
+                                <a href="{% url 'MealIngredient-update' Ingredient.pk %}"
                                    class="px-3 py-2 rounded-lg bg-yellow-100 text-yellow-700 hover:bg-yellow-200">
 
                                     <i class="fa-solid fa-pen"></i>
@@ -154,7 +145,7 @@
                                 </a>
 
                                 <!-- Delete -->
-                                <a href="{% url 'meal-delete' meal.pk %}"
+                                <a href="{% url 'MealIngredient-delete' Ingredient.pk %}"
                                    class="px-3 py-2 rounded-lg bg-red-100 text-red-700 hover:bg-red-200">
 
                                     <i class="fa-solid fa-trash"></i>
@@ -178,19 +169,19 @@
                                 <i class="fa-solid fa-bowl-food text-6xl text-gray-300 mb-4"></i>
 
                                 <h3 class="text-xl font-semibold text-gray-500">
-                                    No Meals Found
+                                    No Meal Ingredient Found
                                 </h3>
 
                                 <p class="text-gray-400 mt-2">
-                                    Click the button below to create your first meal.
+                                    Click the button below to create your first Meal Ingredient.
                                 </p>
 
-                                <a href="{% url 'meal-create' %}"
+                                <a href="{% url 'Ingredient-create' %}"
                                    class="mt-6 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-lg">
 
                                     <i class="fa-solid fa-plus"></i>
 
-                                    Create Meal
+                                    Create Meal Ingredient
 
                                 </a>
 
@@ -216,7 +207,7 @@
 
             <div class="text-sm text-gray-500">
 
-                Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} meals
+                Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} Meal Ingredient
 
             </div>
 

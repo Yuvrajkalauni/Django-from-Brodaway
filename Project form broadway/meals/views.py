@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 
 from meals.forms import IngredientForm, MealForm, MealIngredientForm, MealPlanForm, MealPlanItemsForm
@@ -19,113 +20,120 @@ class MealCreateView(CreateView):
     model = Meal
     template_name = 'meal/create.html'
     form_class = MealForm
-    success_url = '/meal'
+    success_url =  reverse_lazy('meal-list')
 
 class MealUpdateView(UpdateView):
     model = Meal
     template_name = 'meal/update.html'
     form_class = MealForm
-    success_url = '/meal'
+    success_url = reverse_lazy('meal-list')
 
 class MealDeleteView(DeleteView):
     model = Meal
-    success_url = '/meal'
-
-
+    template_name = 'meal/delete.html'
+    success_url = reverse_lazy('meal-list')
 
 #------------------------------ MealPlan ------------------------------
 
 class MealPlanListView(ListView):
     model = MealPlan
-    template_name = 'mealPlan/list.html'
+    paginate_by = 10
+    template_name = 'mealplan/list.html'
     context_object_name = 'mealPlans'
 
 class MealPlanCreateView(CreateView):
     model = MealPlan
-    template_name = 'mealPlan/create.html'
+    template_name = 'mealplan/create.html'
     form_class = MealPlanForm
-    success_url = '/meal/mealPlan'
+    success_url =  reverse_lazy('MealPlan-list')
 
 class MealPlanUpdateView(UpdateView):
     model = MealPlan
-    template_name = 'mealPlan/update.html'
+    template_name = 'mealplan/update.html'
     form_class = MealPlanForm
-    success_url = '/meal/mealPlan'
+    success_url =  reverse_lazy('MealPlan-list')
 
 class MealPlanDeleteView(DeleteView):
     model = MealPlan
-    success_url = '/meal/mealPlan'
+    template_name = 'mealplan/delete.html'
+    success_url =  reverse_lazy('MealPlan-list')
 
 
 #------------------------------ MealPlanItems ------------------------------
 
 class MealPlanItemsListView(ListView):
     model = MealPlanItems
-    template_name = 'MealPlanItems/list.html'
-    context_object_name = 'MealPlanItemss'
+    paginate_by = 10
+    template_name = 'mealplanitem/list.html'
+    context_object_name = 'MealPlanItems'
 
 class MealPlanItemsCreateView(CreateView):
     model = MealPlanItems
-    template_name = 'MealPlanItems/create.html'
+    template_name = 'mealplanitem/create.html'
     form_class = MealPlanItemsForm
-    success_url = '/meal/MealPlanItems'
+    success_url = reverse_lazy('MealPlanItem-list')
 
 class MealPlanItemsUpdateView(UpdateView):
     model = MealPlanItems
-    template_name = 'MealPlanItems/update.html'
+    template_name = 'mealplanitem/update.html'
     form_class = MealPlanItemsForm
-    success_url = '/meal/MealPlanItems'
+    success_url = reverse_lazy('MealPlanItem-list')
 
 class MealPlanItemsDeleteView(DeleteView):
     model = MealPlanItems
-    success_url = '/meal/MealPlanItems'
+    template_name = 'mealplanitem/delete.html'
+    success_url = reverse_lazy('MealPlanItem-list')
 
 
 #------------------------------ Ingredient ------------------------------
 
 class IngredientListView(ListView):
     model = Ingredient
-    template_name = 'Ingredient/list.html'
+    paginate_by = 10
+    template_name = 'ingredient/list.html'
     context_object_name = 'Ingredients'
 
 class IngredientCreateView(CreateView):
     model = Ingredient
-    template_name = 'Ingredient/create.html'
+    template_name = 'ingredient/create.html'
     form_class = IngredientForm
-    success_url = '/meal/Ingredient'
+    success_url = reverse_lazy('Ingredient-list')
 
 class IngredientUpdateView(UpdateView):
     model = Ingredient
-    template_name = 'Ingredient/update.html'
+    template_name = 'ingredient/update.html'
     form_class = IngredientForm
-    success_url = '/meal/Ingredient'
+    success_url = reverse_lazy('Ingredient-list')
 
 class IngredientDeleteView(DeleteView):
     model = Ingredient
-    success_url = '/meal/Ingredient'
+    template_name = 'ingredient/delete.html'
+    success_url = reverse_lazy('Ingredient-list')
 
 
 #------------------------------ MealIngredient ------------------------------
 
 class MealIngredientListView(ListView):
     model = MealIngredient
-    template_name = 'MealIngredient/list.html'
+    paginate_by = 10
+    template_name = 'mealingredient/list.html'
     context_object_name = 'MealIngredients'
 
 class MealIngredientCreateView(CreateView):
     model = MealIngredient
-    template_name = 'MealIngredient/create.html'
+    template_name = 'mealingredient/create.html'
     form_class = MealIngredientForm
-    success_url = '/meal/MealIngredient'
+    success_url = reverse_lazy('MealIngredient-list')
 
 class MealIngredientUpdateView(UpdateView):
     model = MealIngredient
-    template_name = 'MealIngredient/update.html'
+    template_name = 'mealingredient/update.html'
     form_class = MealIngredientForm
-    success_url = '/meal/MealIngredient'
+    success_url = reverse_lazy('MealIngredient-list')
 
 class MealIngredientDeleteView(DeleteView):
     model = MealIngredient
-    success_url = '/meal/MealIngredient'
+    template_name = 'mealingredient/delete.html'
+    success_url = reverse_lazy('MealIngredient-list')
 
 
