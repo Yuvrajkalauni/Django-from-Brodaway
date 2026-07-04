@@ -1,5 +1,5 @@
 from django import forms
-from meals.models import Ingredient, Meal, MealIngredients, MealPlan, MealPlanItems
+from meals.models import Ingredient, Meal, MealIngredient, MealPlan, MealPlanItems
 
 class MealForm(forms.ModelForm):
     class Meta:
@@ -27,5 +27,5 @@ class IngredientForm(forms.ModelForm):
 
 class MealIngredientForm(forms.ModelForm):
     class Meta:
-        model = MealIngredients
+        model = MealIngredient
         fields = "__all__"

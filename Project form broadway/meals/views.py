@@ -11,6 +11,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 class MealListView(ListView):
     model = Meal
+    paginate_by = 10
     template_name = 'meal/list.html'
     context_object_name = 'meals'
 

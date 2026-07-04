@@ -22,10 +22,10 @@ urlpatterns = [
     path('MealPlanItem/delete/<int:pk>', MealPlanItemsDeleteView.as_view(), name = 'MealPlanItem-delete'),
 
     #------------------------------ Ingredient ------------------------------
-    path('ingredient/', IngredientListView.as_view(), name = 'ingredient-list'),
-    path('ingredient/create/', IngredientCreateView.as_view(), name = 'ingredient-create'),
-    path('ingredient/update/<int:pk>', IngredientUpdateView.as_view(), name = 'ingredient-update'),
-    path('ingredient/delete/<int:pk>', IngredientDeleteView.as_view(), name = 'ingredient-delete'),
+    path('ingredient/', IngredientListView.as_view(), name = 'Ingredient-list'),
+    path('ingredient/create/', IngredientCreateView.as_view(), name = 'Ingredient-create'),
+    path('ingredient/update/<int:pk>', IngredientUpdateView.as_view(), name = 'Ingredient-update'),
+    path('ingredient/delete/<int:pk>', IngredientDeleteView.as_view(), name = 'Ingredient-delete'),
 
     #------------------------------ MealIngredient ------------------------------
     path('MealIngredient/', MealIngredientListView.as_view(), name = 'MealIngredient-list'),

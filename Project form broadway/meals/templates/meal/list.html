@@ -1,0 +1,257 @@
+{% extends "home/base.html" %}
+
+{% block title %}Meals{% endblock %}
+
+{% block page_title %}Meals{% endblock %}
+
+{% block content %}
+
+<div class="space-y-6">
+
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+
+        <div>
+            <h1 class="text-3xl font-bold text-slate-800">
+                Meals
+            </h1>
+            <p class="text-gray-500 mt-1">
+                Manage all meals available in NutriGPT.
+            </p>
+        </div>
+
+        <a href="{% url 'meal-create' %}"
+           class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-lg shadow transition">
+
+            <i class="fa-solid fa-plus"></i>
+            Add Meal
+
+        </a>
+
+    </div>
+
+
+    <!-- Card -->
+    <div class="bg-white rounded-xl shadow border border-gray-200">
+
+        <!-- Card Header -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6 border-b">
+
+            <div>
+                <h2 class="text-xl font-semibold text-slate-800">
+                    Meal List
+                </h2>
+
+                <p class="text-sm text-gray-500">
+                    Total Meals : {{ page_obj.paginator.count }}
+                </p>
+            </div>
+
+            <!-- Search -->
+            <form method="get">
+
+                <div class="relative">
+
+                    <input
+                        type="text"
+                        name="search"
+                        value="{{ request.GET.search }}"
+                        placeholder="Search meal..."
+                        class="w-72 border border-gray-300 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+
+            <table class="min-w-full text-sm">
+
+                <thead class="bg-slate-100 text-slate-700">
+
+                    <tr>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            SN
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Meal Name
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Meal Type
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Preparation Time
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Description
+                        </th>
+
+                        <th class="px-6 py-4 text-center font-semibold">
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for meal in meals %}
+
+                    <tr class="border-t hover:bg-slate-50">
+
+                        <td class="px-6 py-4">
+                            {{ page_obj.start_index|add:forloop.counter0 }}
+                        </td>
+
+                        <td class="px-6 py-4 font-medium">
+                            {{ meal.name }}
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium">
+
+                                {{ meal.meal_type }}
+
+                            </span>
+
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            {{ meal.prepare_time }} min
+
+                        </td>
+
+                        <td class="px-6 py-4 text-gray-600">
+
+                            {{ meal.description|default:"-"|truncatechars:60 }}
+
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            <div class="flex justify-center gap-2">
+
+                                <!-- Update -->
+                                <a href="{% url 'meal-update' meal.pk %}"
+                                   class="px-3 py-2 rounded-lg bg-yellow-100 text-yellow-700 hover:bg-yellow-200">
+
+                                    <i class="fa-solid fa-pen"></i>
+
+                                </a>
+
+                                <!-- Delete -->
+                                <a href="{% url 'meal-delete' meal.pk %}"
+                                   class="px-3 py-2 rounded-lg bg-red-100 text-red-700 hover:bg-red-200">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                {% empty %}
+
+                    <tr>
+
+                        <td colspan="6" class="py-16 text-center">
+
+                            <div class="flex flex-col items-center">
+
+                                <i class="fa-solid fa-bowl-food text-6xl text-gray-300 mb-4"></i>
+
+                                <h3 class="text-xl font-semibold text-gray-500">
+                                    No Meals Found
+                                </h3>
+
+                                <p class="text-gray-400 mt-2">
+                                    Click the button below to create your first meal.
+                                </p>
+
+                                <a href="{% url 'meal-create' %}"
+                                   class="mt-6 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-lg">
+
+                                    <i class="fa-solid fa-plus"></i>
+
+                                    Create Meal
+
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Pagination -->
+        {% if is_paginated %}
+
+        <div class="flex justify-between items-center p-6 border-t">
+
+            <div class="text-sm text-gray-500">
+
+                Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} meals
+
+            </div>
+
+            <div class="flex gap-2">
+
+                {% if page_obj.has_previous %}
+
+                <a href="?page={{ page_obj.previous_page_number }}"
+                   class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+
+                    Previous
+
+                </a>
+
+                {% endif %}
+
+                {% if page_obj.has_next %}
+
+                <a href="?page={{ page_obj.next_page_number }}"
+                   class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+
+                    Next
+
+                </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

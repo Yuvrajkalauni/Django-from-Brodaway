@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MealPlan, Meal, MealPlanItems, Ingredient, MealIngredients
+from .models import MealPlan, Meal, MealPlanItems, Ingredient, MealIngredient
 
 
 
@@ -77,7 +77,7 @@ class IngredientAdmin(admin.ModelAdmin):
     search_fields = ("name",)
 
 
-@admin.register(MealIngredients)
+@admin.register(MealIngredient)
 class MealIngredientsAdmin(admin.ModelAdmin):
     list_display = (
         "id",
