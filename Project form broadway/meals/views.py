@@ -1,10 +1,15 @@
+import json
+
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
+from requests import request
 
 from meals.forms import IngredientForm, MealForm, MealIngredientForm, MealPlanForm, MealPlanItemsForm
 from meals.models import Ingredient, Meal, MealIngredient, MealPlan, MealPlanItems
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+
+from meals.settings import generate_json_data
 
 #Creating view by using class base
 
@@ -136,4 +141,12 @@ class MealIngredientDeleteView(DeleteView):
     template_name = 'mealingredient/delete.html'
     success_url = reverse_lazy('MealIngredient-list')
 
+#------------------------------ AI Integration ------------------------------
 
+def generate_ai_data(requwst):
+    data1 = generate_json_data()
+    data2 = json.loads(data1)
+    context = {
+        "data": data2
+    }
+    return render(request, "ingredient/ai.html",context)
