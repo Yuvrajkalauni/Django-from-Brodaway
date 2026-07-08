@@ -1,5 +1,5 @@
 from django.urls import path
-from meals.views import IngredientCreateView, IngredientDeleteView, IngredientListView, IngredientUpdateView, MealCreateView, MealDeleteView, MealIngredientCreateView, MealIngredientDeleteView, MealIngredientListView, MealIngredientUpdateView, MealListView, MealPlanCreateView, MealPlanDeleteView, MealPlanItemsCreateView, MealPlanItemsDeleteView, MealPlanItemsListView, MealPlanItemsUpdateView, MealPlanListView, MealPlanUpdateView, MealUpdateView
+from meals.views import IngredientCreateView, IngredientDeleteView, IngredientListView, IngredientUpdateView, MealCreateView, MealDeleteView, MealIngredientCreateView, MealIngredientDeleteView, MealIngredientListView, MealIngredientUpdateView, MealListView, MealPlanCreateView, MealPlanDeleteView, MealPlanItemsCreateView, MealPlanItemsDeleteView, MealPlanItemsListView, MealPlanItemsUpdateView, MealPlanListView, MealPlanUpdateView, MealUpdateView, generate_ai_data
 
 urlpatterns = [
 
@@ -33,5 +33,6 @@ urlpatterns = [
     path('MealIngredient/update/<int:pk>', MealIngredientUpdateView.as_view(), name = 'MealIngredient-update'),
     path('MealIngredient/delete/<int:pk>', MealIngredientDeleteView.as_view(), name = 'MealIngredient-delete'), 
 
-    
+    #------------------------------ AI Integration ------------------------------
+    path('AI/',generate_ai_data, name='Generate-AI-Data')
 ]
