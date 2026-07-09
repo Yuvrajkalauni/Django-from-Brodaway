@@ -1,9 +1,11 @@
+import ast
 import json
 
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from requests import request
+import urllib
 
 from meals.forms import IngredientForm, MealForm, MealIngredientForm, MealPlanForm, MealPlanItemsForm
 from meals.models import Ingredient, Meal, MealIngredient, MealPlan, MealPlanItems
@@ -143,10 +145,29 @@ class MealIngredientDeleteView(DeleteView):
 
 #------------------------------ AI Integration ------------------------------
 
-def generate_ai_data(requwst):
+def generate_ai_data(request):
     data1 = generate_json_data()
     data2 = json.loads(data1)
     context = {
         "data": data2
     }
     return render(request, "ingredient/ai.html",context)
+
+
+
+
+def save_ai_data(request, data):
+    decoded_string = urllib.parse.unquote(data)           # removing %5,%80 like string form url
+    ingredients_list = ast.literal_eval(decoded_string)   # changing string into python list
+    form = IngredientForm()
+    if request.method == 'POST':
+        data = request.POST
+        form = IngredientForm(data=data)
+        if form.is_valid():
+            form.save()
+            return redirect('Ingredient-list')
+    context = {
+        "form":form,
+        "Ingredients": ingredients_list
+    }
+    return render(request, 'ingredient/aisave.html', context)

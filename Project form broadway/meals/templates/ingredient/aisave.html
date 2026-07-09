@@ -1,0 +1,104 @@
+{% extends "home/base.html" %}
+
+{% block title %}AI Ingredient{% endblock %}
+{% block page_title %}AI Ingredient{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+            <h1 class="text-3xl font-bold text-slate-800">AI Ingredient</h1>
+            <p class="text-gray-500 mt-1">Manage ai ingredient available in NutriGPT.</p>
+        </div>
+        <a href="{% url 'Generate-AI-Data' %}" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-lg shadow transition">
+            <i class="fa-solid fa-plus"></i> Add Another
+        </a>
+    </div>
+
+    <div class="bg-white rounded-xl shadow border border-gray-200">
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6 border-b">
+                <div>
+                    <h2 class="text-xl font-semibold text-slate-800">AI Ingredient</h2>
+                    <p class="text-sm text-gray-500">Total Ingredient : 1</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-slate-100 text-slate-700">
+                        <tr>
+                            <th class="px-6 py-4 text-left font-semibold">SN</th>
+                            <th class="px-6 py-4 text-left font-semibold">Ingredient Name</th>
+                            <th class="px-6 py-4 text-left font-semibold">Unit</th>
+                            <th class="px-6 py-4 text-left font-semibold">Calories Per 100g</th>
+                            <th class="px-6 py-4 text-left font-semibold">Protein Per 100g</th>
+                            <th class="px-6 py-4 text-left font-semibold">Carbs Per 100g</th>
+                            <th class="px-6 py-4 text-left font-semibold">Fat Per 100g</th>
+                            <th class="px-6 py-4 text-center font-semibold">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for Ingredient in Ingredients %}
+                        <tr class="border-t hover:bg-slate-50">
+                            <td class="px-6 py-4 text-gray-500 font-medium">
+                                {{ forloop.counter }}
+                            </td>
+
+                            <td class="px-6 py-4 font-medium text-slate-800">
+                                {{ Ingredient.name }}
+                                <input type="hidden" name="name" value="{{ Ingredient.name }}">
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium">
+                                    {{ Ingredient.unit }}
+                                </span>
+                                <input type="hidden" name="unit" value="{{ Ingredient.unit }}">
+                            </td>
+
+                            <td class="px-6 py-4 text-slate-600">
+                                {{ Ingredient.calories_per_100g }}
+                                <input type="hidden" name="calories_per_100g" value="{{ Ingredient.calories_per_100g }}">
+                            </td>
+                            
+                            <td class="px-6 py-4 text-slate-600">
+                                {{ Ingredient.protein_per_100g }}
+                                <input type="hidden" name="protein_per_100g" value="{{ Ingredient.protein_per_100g }}">
+                            </td>
+
+                            <td class="px-6 py-4 text-slate-600">
+                                {{ Ingredient.carbs_per_100g }}
+                                <input type="hidden" name="carbs_per_100g" value="{{ Ingredient.carbs_per_100g }}">
+                            </td>
+
+                            <td class="px-6 py-4 text-slate-600">
+                                {{ Ingredient.fat_per_100g }}
+                                <input type="hidden" name="fat_per_100g" value="{{ Ingredient.fat_per_100g }}">
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="flex justify-center gap-2">
+                                    <a href="{% url 'Ingredient-list' %}" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 text-center text-gray-700 text-sm">
+                                        Cancel
+                                    </a>
+                                    <button type="submit" class="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition text-sm font-medium">
+                                        Save
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
