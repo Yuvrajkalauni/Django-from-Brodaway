@@ -171,3 +171,4 @@ def save_ai_data(request, data):
         "Ingredients": ingredients_list
     }
     return render(request, 'ingredient/aisave.html', context)
+
