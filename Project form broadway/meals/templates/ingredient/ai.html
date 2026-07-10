@@ -1,0 +1,186 @@
+{% extends "home/base.html" %}
+
+{% block title %}AI Ingredient{% endblock %}
+
+{% block page_title %}AI Ingredient{% endblock %}
+
+{% block content %}
+
+<div class="space-y-6">
+
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+
+        <div>
+            <h1 class="text-3xl font-bold text-slate-800">
+                AI Ingredient
+            </h1>
+            <p class="text-gray-500 mt-1">
+                Manage all ingredient available in NutriGPT.
+            </p>
+        </div>
+
+        <a href="{% url 'Generate-AI-Data' %}"
+        class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-lg shadow transition">
+
+            <i class="fa-solid fa-plus"></i>
+            Re-Generate Ingredient
+        </a>
+
+    </div>
+
+
+    <!-- Card -->
+    <div class="bg-white rounded-xl shadow border border-gray-200">
+
+        <!-- Card Header -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6 border-b">
+
+            <div>
+                <h2 class="text-xl font-semibold text-slate-800">
+                    AI Ingredient List
+                </h2>
+
+            </div>
+
+            <!-- Search -->
+            <form method="get">
+
+                <div class="relative">
+
+                    <input
+                        type="text"
+                        name="search"
+                        value="{{ request.GET.search }}"
+                        placeholder="Search meal..."
+                        class="w-72 border border-gray-300 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+
+            <table class="min-w-full text-sm">
+
+                <thead class="bg-slate-100 text-slate-700">
+
+                    <tr>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            SN
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Ingredient Name
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Unit
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Calories Per 100g
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Protein Per 100g
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Carbs Per 100g
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Fat Per 100g
+                        </th>
+
+                        <th class="px-6 py-4 text-left font-semibold">
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for Ingredient in data %}
+
+                    <tr class="border-t hover:bg-slate-50">
+
+                        <td class="px-6 py-4">
+                            {{ forloop.counter }}
+                        </td>
+
+                        <td class="px-6 py-4 font-medium">
+                            {{ Ingredient.name }}
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium">
+
+                                {{ Ingredient.unit}}
+
+                            </span>
+
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            {{ Ingredient.calories_per_100g }}
+
+                        </td>
+                        
+                        <td class="px-6 py-4">
+
+                            {{ Ingredient.protein_per_100g }}
+
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            {{ Ingredient.carbs_per_100g }}
+
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            {{ Ingredient.fat_per_100g }}
+
+                        </td>
+
+                        <td>
+                            <a href="{% url 'Save-AI-Data' data %}"
+                            class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-lg shadow transition">
+
+                            <i class="fa-solid fa-plus"></i>
+                            Add Ingredient
+
+                            </a>
+                    
+                        </td>
+
+                    </tr>
+                    
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
