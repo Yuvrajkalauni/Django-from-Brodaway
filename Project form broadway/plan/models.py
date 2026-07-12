@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -18,3 +19,28 @@ class SubscriptionPlan (models.Model):
     
     class meta:
         db_table = "Subscription Plan"
+
+    
+
+#-------------------- Subscription Plan --------------------
+
+class UserSubscriptionStatus(models.TextChoices):
+        ACTIVATE = 'Activate'
+        EXPIRED = 'Expired'
+        CANCELLED = 'Cancelled'
+        PENDING = 'Pending'
+        PAUSED = 'Paused'
+        FAILED = 'Failed'
+
+class UserSubscription (models.Model):
+     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "Subscriptions")
+     plan = models.ForeignKey(SubscriptionPlan, on_delete = models.CASCADE, related_name = "User Subscriptions")
+     start_data = models.Datafield()
+     end_date = models.DateField()
+     status = models.CharField(max_length = 20, choices = UserSubscriptionStatus.choices, default = UserSubscriptionStatus.PENDING)
+
+     def _str_(self):
+          return f"{self.user.username}-{self.plan}({self.status})"
+     
+     class meta:
+          db_table = "User Subscription"
