@@ -1,9 +1,9 @@
 {% extends "home/base.html" %}
 
-{% block title %}Update Meal{% endblock %}
+{% block title %}Update Ingredient{% endblock %}
 
 {% block page_title %}
-Update Meal
+Update Ingredient
 {% endblock %}
 
 {% block content %}
@@ -16,21 +16,21 @@ Update Meal
         <div>
 
             <h1 class="text-3xl font-bold text-slate-800">
-                Update Meal
+                Update Ingredient
             </h1>
 
             <p class="text-gray-500 mt-1">
-                Modify the information of an existing meal.
+                Modify the information of an existing Ingredient.
             </p>
 
         </div>
 
-        <a href="{% url 'meal-list' %}"
+        <a href="{% url 'Ingredient-list' %}"
            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition">
 
             <i class="fa-solid fa-arrow-left"></i>
 
-            Back to Meals
+            Back to Ingredients
 
         </a>
 
@@ -46,7 +46,7 @@ Update Meal
         <div class="border-b border-gray-200 px-6 py-4">
 
             <h2 class="text-xl font-semibold text-slate-800">
-                Edit Meal Details
+                Edit Ingredient Details
             </h2>
 
         </div>
@@ -78,7 +78,7 @@ Update Meal
 
                     <i class="fa-solid fa-floppy-disk"></i>
 
-                    Update Meal
+                    Update Ingredient
 
                 </button>
 
