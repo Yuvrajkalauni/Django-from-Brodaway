@@ -23,5 +23,6 @@ from home.views import dashboard
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('meal/', include('meals.urls')),
-    path('dashboard/', dashboard, name='dashboard')
+    path('dashboard/', dashboard, name='dashboard'),
+    path('user_sub/',include('plan.urls'))
 ]
